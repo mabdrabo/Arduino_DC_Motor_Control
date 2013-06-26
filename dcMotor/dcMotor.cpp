@@ -18,7 +18,7 @@
 #include "Arduino.h"
 #include "dcMotor.h"
 
-dcMotor::dcMotor(boolean direction_pwm, int motor_0, int motor_1)
+dcMotor::dcMotor(bool direction_pwm, int motor_0, int motor_1)
 {
   pinMode(motor_0, OUTPUT);
   pinMode(motor_1, OUTPUT);
@@ -31,20 +31,20 @@ void dcMotor::update(int direction, int pwm)
 {
 	if (_direction_pwm)
 	{
-		DigitalWrite(_motor_0, direction);
-		AnalogWrite(_motor_1, pwm);
+		digitalWrite(_motor_0, direction);
+		analogWrite(_motor_1, pwm);
 	}
 	else
 	{
 		if (_direction_pwm)
 		{
-			AnalogWrite(_motor_0, pwm);
-			AnalogWrite(_motor_1, 0);
+			analogWrite(_motor_0, pwm);
+			analogWrite(_motor_1, 0);
 		}
 		else
 		{
-			AnalogWrite(_motor_0, 0);
-			AnalogWrite(_motor_1, pwm);
+			analogWrite(_motor_0, 0);
+			analogWrite(_motor_1, pwm);
 		}
 	}
 }
@@ -53,11 +53,11 @@ void dcMotor::stop()
 {
 	if (_direction_pwm)
 	{
-		AnalogWrite(_motor_1, 0);
+		analogWrite(_motor_1, 0);
 	}
 	else
 	{
-		AnalogWrite(_motor_0, 0);
-		AnalogWrite(_motor_1, 0);
+		analogWrite(_motor_0, 0);
+		analogWrite(_motor_1, 0);
 	}
 }

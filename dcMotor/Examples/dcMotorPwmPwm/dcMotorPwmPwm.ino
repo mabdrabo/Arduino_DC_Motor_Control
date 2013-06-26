@@ -1,6 +1,6 @@
 #include <dcMotor.h>
 
-dcMotor motor1(True, 52, 2);
+dcMotor motor1(false, 3, 2);
 
 void setup()
 {
